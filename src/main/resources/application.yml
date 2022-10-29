@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/db
+    username: admin
+    password: admin
+    driver-class-name: com.mysql.jdbc.Driver
+  flyway:
+    enabled: true
+    user: admin
+    password: admin
+    schemas: db
+    url: jdbc:mysql://localhost:3306/db
+    locations: filesystem:db/migration
+
