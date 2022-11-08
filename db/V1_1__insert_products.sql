@@ -1,0 +1,10 @@
+INSERT INTO products() VALUES (1,'LilyPad USB', 'ATmega32U4', '3.3/3.8…5', 8, '4/0', '9/4', 1, 2.5, 32, '-','Micro','',3.7,2000);
+INSERT INTO products() VALUES (2,'Mega 2560', 'ATmega2560', '5/7…12', 16, '16/0', '54/15', 4, 8, 256, 'Type B','4','',4,2200);
+INSERT INTO products() VALUES (3,'Micro', 'ATmega32U4', '5/7…12', 16, '12/0', '20/7', 1, 2.5, 32, 'Micro','1','',2,2500);
+INSERT INTO products() VALUES (4,'MKR1000', 'SAMD21 Cortex-M0+', '3.3/5', 48, '7/1', '8/4', 0, 32, 256, 'Micro','1','',3.5,3000);
+INSERT INTO products() VALUES (5,'Uno', 'ATmega328P', '5/7…12', 16, '6/0', '14/6', 1, 2, 32, 'Type B','1','',4,1500);
+INSERT INTO products() VALUES (6,'Zero', 'ATSAMD21G18', '3.3/7…12', 48, '6/1', '14/10', 0, 32, 256, '2xMicro','2','',4.5,3200);
+INSERT INTO products() VALUES (7,'Due', 'ATSAM3X8E', '3.3/7…12', 84, '12/2', '54/12', 0, 96, 512, '2xMicro','4','',4,500);
+INSERT INTO products() VALUES (8,'Leonardo', 'ATmega32U4', '5/7…12', 16, '12/0', '20/7', 1, 2.5, 32, 'Micro','1','',5,2500);
+INSERT INTO products() VALUES (9,'Nano', 'ATmega168', '5/7…9', 16, '8/0', '14/6', 0.512, 1, 16, 'Mini','1','',4.5,1300);
+INSERT INTO products() VALUES (10,'Nano', 'ATmega328P', '5/7…9', 16, '8/0', '14/6', 1, 2, 32, 'Mini','1','',3,1400);

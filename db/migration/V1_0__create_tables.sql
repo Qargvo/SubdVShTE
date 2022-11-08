@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS products
 (
     id                 SERIAL PRIMARY KEY,
-    arduino_board_type VARCHAR(32) UNIQUE,
+    arduino_board_type VARCHAR(32),
     processor_type     VARCHAR(32),
     io_voltage         VARCHAR(16),
     cpu_frequency      INT,
@@ -11,8 +11,10 @@ CREATE TABLE IF NOT EXISTS products
     scram              FLOAT,
     flash              INT,
     usb                VARCHAR(16),
-    uart               VARCHAR(8)
-
+    uart               VARCHAR(8),
+    photo              VARCHAR(128),
+    rate               FLOAT,
+    price              FLOAT
 
 );
 CREATE TABLE IF NOT EXISTS points

@@ -1,0 +1,15 @@
+body {
+
+}
+
+h1 {
+    color: #6066ff;
+    margin-left: 40px;
+}
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 200px;
+    margin-left: 50px;
+}

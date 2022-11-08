@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <title>Subd</title>
+</head>
+<body>
+<h1>Товары</h1>
+<table>
+    <tr>
+        <th>Тип</th>
+        <th>Процессор</th>
+        <th>В наличии</th>
+        <th>Цена</th>
+    </tr>
+    <tr th:each="i : ${avlist}">
+        <td><a th:href="@{/products/?id={id}(id=${i.id})}" th:text="${i.arduino_board_type}"></a></td>
+        <td th:text="${i.processor_type}"></td>
+        <td th:text="${i.cnt}"></td>
+        <td th:text="${i.price}"></td>
+    </tr>
+</table>
+</body>

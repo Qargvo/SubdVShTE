@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <title>Subd</title>
+</head>
+<body>
+
+<h1><label th:text="${arduino_board_type}"></label></h1>
+<img th:src="@{/img/{ph}.jpeg(ph=${id})}" alt="arduino"><br>
+<a>Стоимость: <label th:text="${price}"></label></a><br>
+<a>Рейтинг: <label th:text="${rate}"></label></a>
+<h3>Характеристики</h3>
+<table>
+    <tr>
+        <th>Тип процессора</th>
+        <th><label th:text="${processor_type}"></label></th>
+    </tr>
+    <tr>
+        <th>Напряжение IO, / питания [В]</th>
+        <th><label th:text="${io_voltage}"></label></th>
+    </tr>
+    <tr>
+        <th>Тактовая частота CPU [MГц]</th>
+        <th><label th:text="${cpu_frequency}"></label></th>
+    </tr>
+    <tr>
+        <th>Входы / аналоговые выходы</th>
+        <th><label th:text="${analogue_inp_out}"></label></th>
+    </tr>
+    <tr>
+        <th>Входы-выходы цифровые / количество PWM</th>
+        <th><label th:text="${digital_inp_out}"></label></th>
+    </tr>
+    <tr>
+        <th>EEPROM [кБ]</th>
+        <th><label th:text="${eeprom}"></label></th>
+    </tr>
+    <tr>
+        <th>SRAM [кБ]</th>
+        <th><label th:text="${scram}"></label></th>
+    </tr>
+    <tr>
+        <th>Flash [кБ]</th>
+        <th><label th:text="${flash}"></label></th>
+    </tr>
+    <tr>
+        <th>USB</th>
+        <th><label th:text="${usb}"></label></th>
+    </tr>
+    <tr>
+        <th>UART</th>
+        <th><label th:text="${uart}"></label></th>
+    </tr>
+
+</table>
+<h3>Наличие в магазинах</h3>
+<table>
+    <tr>
+        <th>Адрес</th>
+        <th>Телефон</th>
+        <th>В наличии</th>
+    </tr>
+    <tr th:each="i : ${points}">
+        <td th:text="${i.address}"></td>
+        <td th:text="${i.tel}"></td>
+        <td th:text="${i.cnt}"></td>
+    </tr>
+</table>
+<a href="/home">Вернуться</a>
+</body>
+</html>
