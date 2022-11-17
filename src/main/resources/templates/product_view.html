@@ -10,9 +10,12 @@
 <h1><label th:text="${arduino_board_type}"></label></h1>
 <img th:src="@{/img/{ph}.jpeg(ph=${id})}" alt="arduino"><br>
 <a>Стоимость: <label th:text="${price}"></label></a><br>
+<button th:disabled="!${biy}">Купить</button><br>
 <a>Рейтинг: <label th:text="${rate}"></label></a>
+
+<div class="Stars" th:style="@{--rating:{rating}(rating=${rate})}" aria-label="Rating of this product is 2.3 out of 5."></div>
 <h3>Характеристики</h3>
-<table>
+<table class=".char">
     <tr>
         <th>Тип процессора</th>
         <th><label th:text="${processor_type}"></label></th>
@@ -65,7 +68,7 @@
     <tr th:each="i : ${points}">
         <td th:text="${i.address}"></td>
         <td th:text="${i.tel}"></td>
-        <td th:text="${i.cnt}"></td>
+        <td th:text="${i.cnt}>0?${i.cnt}:'Нет в наличии'"></td>
     </tr>
 </table>
 <a href="/home">Вернуться</a>

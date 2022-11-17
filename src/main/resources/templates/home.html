@@ -11,14 +11,18 @@
     <tr>
         <th>Тип</th>
         <th>Процессор</th>
-        <th>В наличии</th>
         <th>Цена</th>
+        <th>В наличии</th>
     </tr>
     <tr th:each="i : ${avlist}">
         <td><a th:href="@{/products/?id={id}(id=${i.id})}" th:text="${i.arduino_board_type}"></a></td>
         <td th:text="${i.processor_type}"></td>
-        <td th:text="${i.cnt}"></td>
         <td th:text="${i.price}"></td>
+        <td th:switch="${i.cnt}">
+            <p th:case="'many'" class="many">Много</p>
+            <p th:case="'few'" class="few">Мало</p>
+            <p th:case="'notAv'" class="notAv">Нет в наличии</p>
+        </td>
     </tr>
 </table>
 </body>

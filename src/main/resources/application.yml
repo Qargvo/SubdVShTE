@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/db
+    url: jdbc:mysql://localhost:3306/mariadb
     username: admin
     password: admin
     driver-class-name: com.mysql.jdbc.Driver
@@ -8,8 +8,8 @@ spring:
     enabled: true
     user: admin
     password: admin
-    schemas: db
-    url: jdbc:mysql://localhost:3306/db
+    schemas: mariadb
+    url: jdbc:mysql://localhost:3306/mariadb
     locations: filesystem:db/migration
 
 

@@ -17,25 +17,33 @@ import java.util.stream.Collectors;
 public class DBRepository {
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
-    public Map<String, String> getProduct(Integer id) throws DataAccessException {
+    public Map<String, Object> getProduct(Integer id) throws DataAccessException {
         final String sql = """
-                SELECT * 
-                FROM products
+                SELECT p.*, IF(sm > 0, true, false) as biy
+                FROM products p LEFT JOIN (SELECT product_id, sum(cnt) AS sm
+                FROM availability
+                WHERE product_id = :id
+                GROUP BY product_id) a ON p.id = a.product_id
                 WHERE id = :id;
                 """;
         return jdbcTemplate.queryForMap(sql, Map.of("id", id)).entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, e -> (e.getValue().toString())));
+                .collect(Collectors.toMap(Map.Entry::getKey, e -> (e.getValue())));
     }
 
     public List<Object> getAvailability() throws DataAccessException {
         final String sql = """
-                SELECT p.id, p.arduino_board_type, p.processor_type, IFNULL(a.sm,0) AS cnt, p.price
+                SELECT p.id, p.arduino_board_type, p.processor_type, IFNULL(IF(a.sm>10, 'many', IF(a.sm>0, 'few', 'notAv')),'notAv') AS cnt, p.price
                 FROM products p LEFT JOIN
                 (SELECT product_id, sum(cnt) AS sm
                 FROM availability
                 GROUP BY product_id) a ON p.id=a.product_id;
                 """;
-        return jdbcTemplate.queryForList(sql, Collections.emptyMap(), Object.class);
+        return jdbcTemplate.query(sql, Collections.emptyMap(),
+                (rs, rowNum) -> Map.of("id", rs.getObject("id"),
+                        "arduino_board_type", rs.getObject("arduino_board_type"),
+                        "processor_type", rs.getObject("processor_type"),
+                        "cnt", rs.getObject("cnt"),
+                        "price", rs.getObject("price")));
     }
 
     public List<Object> getPoints(Integer id) throws DataAccessException {
