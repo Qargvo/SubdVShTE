@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <title>Form</title>
+</head>
+<body>
+<form class="buy_form">
+    <fieldset>
+        <input type="hidden" name="id" th:value="${id}">
+        <legend>Офромление</legend>
+        <label>Введите номер телефона</label><br>
+        <input type="text" name="tel"><br>
+
+        <br><label>Выберете магазин</label><br>
+        <p th:each="i : ${points}" th:if="${i.cnt}>0"><input type="radio" id="point" name="point" th:value="${i.point}"
+                                                             th:text="${i.address}" required="required"></p>
+
+        <input type="submit" value="Оформить" formaction="/order" formmethod="post">
+    </fieldset>
+</form>
+
+</body>

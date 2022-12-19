@@ -2,27 +2,42 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+
     <title>Subd</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
 </head>
 <body>
+<div>
+    <form>
+        <select id="order" name="order" onchange="orderBy();return false;">
+            <option disabled>Выберите магазин</option>
+            <option value="">Отсортировать</option>
+            <option value="priceDown">По убыванию цены</option>
+            <option value="rate">По рейтингу</option>
+        </select>
+
+        <div style="margin-bottom: 15px;margin-top: 15px">
+            <label>Цена нижняя граница</label>
+            <input type="text" id="price-min" value="0" min="0" max="1000">
+            <label>Цена верхняя граница</label>
+            <input type="text" id="price-max" value="10000" min="0" max="10000">
+        </div>
+
+        <div onchange="orderBy(); return false;">
+            <p><input type="radio" id="av" name="av" value="0"
+                      required="required" checked>Все</p>
+            <p><input type="radio" id="av" name="av" value="1"
+                   required="required">Есть в наличии</p>
+        </div>
+
+        <input id="search" type="text">
+        <input type="button" value="Поиск" onclick="
+        formSend();
+        return false">
+    </form>
+</div>
 <h1>Товары</h1>
-<table>
-    <tr>
-        <th>Тип</th>
-        <th>Процессор</th>
-        <th>Цена</th>
-        <th>В наличии</th>
-    </tr>
-    <tr th:each="i : ${avlist}">
-        <td><a th:href="@{/products/?id={id}(id=${i.id})}" th:text="${i.arduino_board_type}"></a></td>
-        <td th:text="${i.processor_type}"></td>
-        <td th:text="${i.price}"></td>
-        <td th:switch="${i.cnt}">
-            <p th:case="'many'" class="many">Много</p>
-            <p th:case="'few'" class="few">Мало</p>
-            <p th:case="'notAv'" class="notAv">Нет в наличии</p>
-        </td>
-    </tr>
-</table>
+
 </body>

@@ -44,3 +44,21 @@ img {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.buy_form{
+    margin: 0 auto;
+    border: 1px solid #4f4f4f;
+    width: 400px;
+    border-radius: 4px;
+    padding: 5px;
+}
+.wrapper {
+    width: 400px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 25px 40px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+
+
+
+

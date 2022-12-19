@@ -10,10 +10,15 @@
 <h1><label th:text="${arduino_board_type}"></label></h1>
 <img th:src="@{/img/{ph}.jpeg(ph=${id})}" alt="arduino"><br>
 <a>Стоимость: <label th:text="${price}"></label></a><br>
-<button th:disabled="!${biy}">Купить</button><br>
+<form>
+    <input type="hidden" name="id" th:value="${id}">
+    <button th:disabled="!${buy}" formaction="/buy" formmethod="get">Купить</button>
+    <br>
+</form>
 <a>Рейтинг: <label th:text="${rate}"></label></a>
 
-<div class="Stars" th:style="@{--rating:{rating}(rating=${rate})}" aria-label="Rating of this product is 2.3 out of 5."></div>
+<div class="Stars" th:style="@{--rating:{rating}(rating=${rate})}"
+     aria-label="Rating of this product is 2.3 out of 5."></div>
 <h3>Характеристики</h3>
 <table class=".char">
     <tr>
